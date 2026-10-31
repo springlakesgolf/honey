@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Spring Lakes Honey</title>
+<meta name="description" content="Raw honey from the hives beside 3 South at Spring Lakes Golf Club. 500 g jars, $19.99 plus HST. Reserve yours online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Montserrat:wght@400;500;600&display=swap">
+<style>
+/* Layout: navy honeycomb hero with jar, a sticky scroll stage that zooms from the 54-hole map into the hives beside 3 South, then a light order sheet. */
+:root {
+  --navy: #323C60;
+  --navy-deep: #262E4C;
+  --gold: #B89A2D;
+  --honey: #D9961A;
+  --honey-light: #F2C14E;
+  --honey-dark: #A86A0C;
+  --paper: #FDFBF6;
+  --surface: #FFFFFF;
+  --ink: #323C60;
+  --ink-soft: #5F6684;
+  --line: #E4DFD0;
+  --field: #FFFFFF;
+  --on-navy: #F4F1E6;
+  --on-navy-soft: #C4C8D8;
+  --error: #A3362D;
+  /* course illustration */
+  --rough: #4E7A3F;
+  --rough-dark: #3F6834;
+  --fairway: #7DAA55;
+  --fairway-stripe: #86B35D;
+  --green-c: #92C266;
+  --tree: #2F5229;
+  --tree-light: #3C6532;
+  --water: #5C8FB0;
+  --water-light: #86B2CC;
+  --sand: #E9DAAE;
+  --path: #CFC6AE;
+
+  --f-mark: "Cinzel", "Trajan Pro", Georgia, serif;
+  --f-display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+  --f-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #141936; --surface: #1C2245; --ink: #EEF0F7; --ink-soft: #A9AEC6;
+    --line: #2F3760; --field: #161B3A; --gold: #CDAF45; --navy-deep: #1B2140; --error: #E07A6F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #141936; --surface: #1C2245; --ink: #EEF0F7; --ink-soft: #A9AEC6;
+  --line: #2F3760; --field: #161B3A; --gold: #CDAF45; --navy-deep: #1B2140; --error: #E07A6F;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.65 var(--f-body); overflow-x: hidden; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.eyebrow { font: 600 12px/1.2 var(--f-body); letter-spacing: .24em; text-transform: uppercase; color: var(--gold); }
+.mark { font: 600 15px/1 var(--f-mark); letter-spacing: .3em; }
+:focus-visible { outline: 3px solid var(--honey-light); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- HERO ---------- */
+.hero { position: relative; background: radial-gradient(120% 90% at 75% 40%, #3B4672 0%, var(--navy) 45%, var(--navy-deep) 100%); color: var(--on-navy); overflow: hidden; isolation: isolate; }
+#comb { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; padding-block: 72px 140px; }
+.hero .mark { color: var(--on-navy); }
+.rule { width: 72px; height: 1px; background: var(--gold); border: 0; margin: 18px 0 22px; }
+.where { font: 600 12px/1.2 var(--f-body); letter-spacing: .24em; text-transform: uppercase; color: var(--honey-light); }
+h1 { margin-top: 14px; line-height: .86; }
+h1 .big { display: block; font: 600 clamp(52px, 9vw, 104px)/.9 var(--f-display); letter-spacing: -.01em; }
+h1 .script { display: block; font: italic 500 clamp(64px, 12vw, 148px)/.9 var(--f-display); color: transparent; background: linear-gradient(100deg, var(--honey-light) 0%, var(--honey) 40%, #F7D886 55%, var(--honey) 70%, var(--honey-light) 100%); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; animation: sheen 7s ease-in-out infinite; padding-bottom: .08em; }
+@keyframes sheen { 0%,100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
+.intro { margin-top: 22px; max-width: 34em; color: var(--on-navy-soft); font-size: 17px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.chip { display: flex; flex-direction: column; gap: 2px; padding: 12px 18px; border: 1px solid rgba(184,154,45,.55); border-radius: 2px; background: rgba(20,25,54,.35); }
+.chip b { font: 600 26px/1.1 var(--f-display); color: var(--on-navy); font-variant-numeric: tabular-nums; }
+.chip span { font: 500 11px/1.2 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--on-navy-soft); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; border: 0; cursor: pointer; text-decoration: none; font: 600 13px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; padding: 18px 26px; border-radius: 2px; background: var(--gold); color: #232B4A; transition: transform .2s, background .2s; }
+.btn:hover { background: #C9AA3A; transform: translateY(-2px); }
+.btn svg { width: 16px; height: 16px; }
+.stock { font: 500 13px/1.3 var(--f-body); color: var(--honey-light); letter-spacing: .04em; }
+
+.jar-zone { position: relative; display: grid; place-items: center; min-height: 380px; }
+.jar { width: min(300px, 100%); height: auto; filter: drop-shadow(0 30px 40px rgba(10,12,30,.45)); animation: sway 6s ease-in-out infinite; transform-origin: 50% 100%; will-change: transform; }
+@keyframes sway { 0%,100% { transform: rotate(-2deg) translateY(0); } 50% { transform: rotate(2deg) translateY(-8px); } }
+.jar .wave { animation: wave 4s linear infinite; }
+@keyframes wave { from { transform: translateX(0); } to { transform: translateX(-120px); } }
+.halo { position: absolute; width: 78%; aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(242,193,78,.32), rgba(242,193,78,0) 65%); }
+
+.bee { position: absolute; left: 0; top: 0; width: 34px; height: 30px; z-index: 2; pointer-events: none; }
+.bee svg { width: 100%; height: 100%; overflow: visible; }
+.bee .wing { transform-box: fill-box; transform-origin: 50% 100%; animation: flap .09s ease-in-out infinite alternate; }
+@keyframes flap { from { transform: scaleY(1); } to { transform: scaleY(.35); } }
+
+.drip { position: absolute; left: 0; right: 0; bottom: -1px; height: 96px; width: 100%; display: block; }
+.drop { animation: fall 3.6s cubic-bezier(.55,0,.9,.5) infinite; transform-box: fill-box; transform-origin: 50% 0; }
+.drop.d2 { animation-delay: 1.3s; animation-duration: 4.4s; }
+.drop.d3 { animation-delay: 2.4s; animation-duration: 3.9s; }
+@keyframes fall { 0%,55% { transform: translateY(0) scale(.6); opacity: 1; } 85% { transform: translateY(70px) scale(1); opacity: 1; } 100% { transform: translateY(90px) scale(1); opacity: 0; } }
+
+/* ---------- ZOOM STAGE ---------- */
+.zoom { position: relative; height: 420vh; background: var(--rough-dark); }
+.stage { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 520px; overflow: hidden; }
+.stage > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(16,22,44,.55) 100%); }
+.captions { position: absolute; left: 0; right: 0; bottom: 0; padding-bottom: max(28px, env(safe-area-inset-bottom, 0px)); padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.cap-stack { position: relative; max-width: 1120px; margin: 0 auto; min-height: 210px; }
+.cap { position: absolute; left: 0; bottom: 0; width: min(440px, 100%); padding: 22px 24px; background: rgba(38,46,76,.9); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: var(--on-navy); border-left: 3px solid var(--honey); opacity: 0; transform: translateY(16px); transition: opacity .45s, transform .45s; }
+.cap.on { opacity: 1; transform: none; }
+.cap .eyebrow { color: var(--honey-light); }
+.cap h2 { font: 600 clamp(30px, 4vw, 42px)/1.05 var(--f-display); margin-top: 8px; }
+.cap p { margin-top: 8px; color: var(--on-navy-soft); font-size: 15px; }
+.steps-dots { position: absolute; right: max(18px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; }
+.steps-dots i { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--on-navy); opacity: .6; transition: background .3s, opacity .3s, transform .3s; }
+.steps-dots i.on { background: var(--honey-light); border-color: var(--honey-light); opacity: 1; transform: scale(1.3); }
+.scroll-hint { position: absolute; top: 24px; left: 50%; transform: translateX(-50%); font: 600 11px/1 var(--f-body); letter-spacing: .24em; text-transform: uppercase; color: var(--on-navy); background: rgba(38,46,76,.75); padding: 10px 14px; border-radius: 2px; transition: opacity .4s; }
+.zoom.static { height: auto; }
+.zoom.static .stage { position: relative; height: 70vh; }
+.zoom.static .cap-stack { min-height: 0; display: grid; gap: 10px; }
+.zoom.static .cap { position: relative; opacity: 1; transform: none; }
+.zoom.static .cap:not(.last), .zoom.static .scroll-hint, .zoom.static .steps-dots { display: none; }
+
+/* ---------- STEPS / DETAILS ---------- */
+section.band { padding-block: 88px; }
+.band h2.title { font: 600 clamp(36px, 5vw, 54px)/1.05 var(--f-display); margin-top: 12px; max-width: 16em; }
+.flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 44px; border-top: 1px solid var(--line); }
+.flow li { list-style: none; padding: 28px 28px 8px 0; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.flow li + li { padding-left: 28px; border-left: 1px solid var(--line); }
+.flow .n { font: italic 600 46px/1 var(--f-display); color: var(--honey); }
+.flow h3 { font: 600 24px/1.15 var(--f-display); }
+.flow p { color: var(--ink-soft); font-size: 15px; }
+ol.flow { padding: 0; margin-bottom: 0; }
+
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 56px; background: var(--surface); border: 1px solid var(--line); }
+.fact { padding: 24px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.fact + .fact { border-left: 1px solid var(--line); }
+.fact dt { font: 600 11px/1.2 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.fact dd { margin: 0; font: 600 26px/1.15 var(--f-display); font-variant-numeric: tabular-nums; }
+.fact small { font-size: 13px; color: var(--ink-soft); }
+
+/* ---------- ORDER ---------- */
+.order { background: var(--surface); border-top: 1px solid var(--line); padding-block: 88px 96px; position: relative; }
+.order-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
+.order-head { position: sticky; top: 32px; display: grid; gap: 16px; }
+.order-head h2 { font: 600 clamp(38px, 5vw, 58px)/1 var(--f-display); }
+.order-head h2 em { color: var(--honey); font-weight: 500; }
+.order-head p { color: var(--ink-soft); }
+.notice { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 16px 18px; border: 1px solid var(--honey); background: rgba(217,150,26,.08); border-radius: 2px; font-size: 14px; color: var(--ink); }
+.notice svg { width: 24px; height: 24px; color: var(--honey); }
+.notice b { display: block; font-weight: 600; margin-bottom: 2px; }
+
+form { display: grid; gap: 30px; min-width: 0; }
+fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 14px; min-width: 0; }
+legend { font: 600 12px/1.2 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; padding: 0; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label.f { display: grid; gap: 6px; font: 500 13px/1.3 var(--f-body); color: var(--ink-soft); min-width: 0; }
+input[type=text], input[type=email], input[type=tel], textarea { width: 100%; font: 400 16px/1.4 var(--f-body); color: var(--ink); background: var(--field); border: 1px solid var(--line); border-radius: 2px; padding: 13px 14px; transition: border-color .2s, box-shadow .2s; }
+input:focus, textarea:focus { outline: none; border-color: var(--honey); box-shadow: 0 0 0 3px rgba(217,150,26,.22); }
+textarea { min-height: 88px; resize: vertical; }
+.bad input, input.bad { border-color: var(--error); }
+.err { color: var(--error); font-size: 12.5px; min-height: 0; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.jars-pick { display: grid; gap: 16px; padding: 22px; border: 1px solid var(--line); background: var(--paper); border-radius: 2px; }
+.stepper { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.stepper button { width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--gold); background: transparent; color: var(--ink); font: 500 24px/1 var(--f-body); cursor: pointer; display: grid; place-items: center; transition: background .2s; }
+.stepper button:hover:not(:disabled) { background: rgba(184,154,45,.14); }
+.stepper button:disabled { opacity: .35; cursor: not-allowed; }
+.count { font: 600 54px/1 var(--f-display); min-width: 1.4em; text-align: center; font-variant-numeric: tabular-nums; }
+.count-l { font: 500 13px/1.3 var(--f-body); color: var(--ink-soft); }
+.shelf { display: flex; flex-wrap: wrap; gap: 6px; }
+.shelf button { width: 34px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; }
+.shelf svg { width: 100%; height: 100%; overflow: visible; }
+.shelf .fill { fill: var(--line); transition: fill .25s, transform .25s; transform-box: fill-box; transform-origin: 50% 100%; }
+.shelf .on .fill { fill: var(--honey); }
+.shelf .pop .fill { animation: pop .4s; }
+@keyframes pop { 40% { transform: scaleY(1.12); } }
+.shelf .lidp { fill: var(--gold); }
+.shelf .glass { fill: none; stroke: var(--ink-soft); stroke-width: 1.5; }
+
+.pick { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pick label { position: relative; display: grid; gap: 4px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 2px; cursor: pointer; background: var(--field); transition: border-color .2s, background .2s; }
+.pick input { position: absolute; opacity: 0; pointer-events: none; }
+.pick b { font: 600 20px/1.2 var(--f-display); }
+.pick span { font-size: 13px; color: var(--ink-soft); }
+.pick label:has(input:checked) { border-color: var(--honey); background: rgba(217,150,26,.08); box-shadow: inset 0 0 0 1px var(--honey); }
+.pick label:has(input:focus-visible) { outline: 3px solid var(--honey-light); outline-offset: 2px; }
+
+.summary { display: grid; gap: 8px; padding: 20px 22px; background: var(--navy); color: var(--on-navy); border-radius: 2px; font-variant-numeric: tabular-nums; }
+.summary .ln { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--on-navy-soft); }
+.summary .tot { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; border-top: 1px solid rgba(184,154,45,.5); padding-top: 12px; margin-top: 4px; }
+.summary .tot span { font: 600 12px/1.2 var(--f-body); letter-spacing: .18em; text-transform: uppercase; }
+.summary .tot b { font: 600 34px/1 var(--f-display); color: var(--honey-light); }
+.summary small { font-size: 12px; color: var(--on-navy-soft); }
+.submit-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.submit-row .btn[disabled] { opacity: .6; cursor: progress; transform: none; }
+.form-msg { font-size: 14px; color: var(--error); }
+
+.done, .closed { display: grid; gap: 16px; padding: 36px 32px; border: 1px solid var(--honey); background: var(--paper); border-radius: 2px; }
+.done h3, .closed h3 { font: 600 40px/1.05 var(--f-display); }
+.done p, .closed p { color: var(--ink-soft); }
+.done dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin: 0; font-variant-numeric: tabular-nums; }
+.done dt { font: 600 11px/1.6 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+.done dd { margin: 0; font-weight: 500; }
+.preview-note { font-size: 13px; color: var(--honey-dark); }
+.done-hex { width: 64px; height: 64px; color: var(--honey); }
+
+footer { background: var(--navy-deep); color: var(--on-navy-soft); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 18px 40px; justify-content: space-between; align-items: center; padding-block: 36px max(36px, env(safe-area-inset-bottom, 0px)); font-size: 14px; }
+footer .mark { color: var(--on-navy); font-size: 13px; }
+footer b { color: var(--on-navy); font-weight: 600; user-select: all; }
+footer .sig { font: italic 600 22px/1 var(--f-display); color: var(--honey-light); }
+
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 48px 120px; gap: 8px; }
+  .jar-zone { min-height: 300px; order: -1; }
+  .jar { width: 210px; }
+  .order-grid { grid-template-columns: 1fr; gap: 36px; }
+  .order-head { position: static; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .fact:nth-child(3) { border-left: 0; }
+  .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 640px) {
+  .flow { grid-template-columns: 1fr; }
+  .flow li + li { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .row2, .pick { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr; }
+  .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
+  .cap { padding: 18px; }
+  .cap-stack { min-height: 230px; }
+  section.band, .order { padding-block: 64px; }
+  .chip b { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <canvas id="comb" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <p class="mark">SPRING LAKES GOLF CLUB</p>
+      <hr class="rule">
+      <p class="where">Harvested beside 3 South</p>
+      <h1><span class="big">Spring Lakes</span><span class="script">Honey</span></h1>
+      <p class="intro">Our own bees, our own course. This honey comes from the hives just left of the 3rd hole on the South Course, bottled in 500 g jars and available while it lasts.</p>
+      <div class="chips">
+        <div class="chip"><b>500 g</b><span>Glass jar</span></div>
+        <div class="chip"><b>$19.99</b><span>Plus HST</span></div>
+        <div class="chip"><b>Limited</b><span>First come, first served</span></div>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="#order">Reserve your jars
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 2v11M3 8.5 8 13.5l5-5"/></svg></a>
+        <span class="stock" id="stockHero" hidden></span>
+      </div>
+    </div>
+    <div class="jar-zone" aria-hidden="true">
+      <div class="halo"></div>
+      <svg class="jar" id="jar" viewBox="0 0 240 300">
+        <defs>
+          <clipPath id="glassClip"><path d="M52 92 Q40 96 40 116 V262 Q40 286 66 286 H174 Q200 286 200 262 V116 Q200 96 188 92 Z"/></clipPath>
+          <linearGradient id="honeyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6C85A"/><stop offset=".55" stop-color="#D9961A"/><stop offset="1" stop-color="#A86A0C"/></linearGradient>
+          <linearGradient id="lidG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D8BC55"/><stop offset=".5" stop-color="#B89A2D"/><stop offset="1" stop-color="#8C7420"/></linearGradient>
+          <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset=".5" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+        </defs>
+        <path d="M52 92 Q40 96 40 116 V262 Q40 286 66 286 H174 Q200 286 200 262 V116 Q200 96 188 92 Z" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+        <g clip-path="url(#glassClip)">
+          <rect x="30" y="128" width="190" height="170" fill="url(#honeyG)"/>
+          <g class="wave"><path d="M0 128 Q30 116 60 128 T120 128 T180 128 T240 128 T300 128 T360 128 V140 H0 Z" fill="#F6C85A"/></g>
+          <circle cx="90" cy="200" r="3" fill="#FCE7A8" opacity=".7"><animate attributeName="cy" values="270;140" dur="5s" repeatCount="indefinite"/></circle>
+          <circle cx="150" cy="230" r="2" fill="#FCE7A8" opacity=".7"><animate attributeName="cy" values="280;140" dur="6.5s" repeatCount="indefinite"/></circle>
+          <circle cx="120" cy="250" r="2.5" fill="#FCE7A8" opacity=".6"><animate attributeName="cy" values="282;140" dur="4.2s" repeatCount="indefinite"/></circle>
+        </g>
+        <rect x="56" y="104" width="12" height="166" rx="6" fill="url(#shine)" opacity=".7"/>
+        <rect x="58" y="70" width="124" height="26" rx="5" fill="url(#lidG)"/>
+        <path d="M66 74v18M76 74v18M86 74v18M96 74v18M106 74v18M116 74v18M126 74v18M136 74v18M146 74v18M156 74v18M166 74v18M174 74v18" stroke="#8C7420" stroke-width="1.4" opacity=".6"/>
+        <path d="M70 96 Q72 112 78 112 Q84 112 84 100 Z M130 96 Q131 118 138 118 Q145 118 144 98 Z" fill="#D9961A"/>
+        <rect x="58" y="158" width="124" height="84" rx="3" fill="#323C60" stroke="#B89A2D" stroke-width="1.5"/>
+        <rect x="64" y="164" width="112" height="72" rx="2" fill="none" stroke="#B89A2D" stroke-opacity=".5"/>
+        <text x="120" y="184" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-size="9" letter-spacing="2" fill="#F4F1E6">SPRING LAKES</text>
+        <text x="120" y="214" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-weight="600" font-size="30" fill="#F2C14E">Honey</text>
+        <text x="120" y="230" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="7.5" letter-spacing="1.6" fill="#C4C8D8">500 g  ·  3 SOUTH</text>
+      </svg>
+    </div>
+  </div>
+  <div class="bee" data-bee="0" aria-hidden="true"><svg viewBox="0 0 34 30"><use href="#beeSym"/></svg></div>
+  <div class="bee" data-bee="1" aria-hidden="true"><svg viewBox="0 0 34 30"><use href="#beeSym"/></svg></div>
+  <div class="bee" data-bee="2" aria-hidden="true"><svg viewBox="0 0 34 30"><use href="#beeSym"/></svg></div>
+  <svg class="drip" viewBox="0 0 1200 96" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#D9961A" d="M0 0H1200V22C1160 22 1150 30 1140 46C1132 60 1118 60 1112 46C1104 30 1080 24 1040 24C990 24 980 30 972 54C966 72 946 72 940 54C932 30 900 22 860 22C800 22 780 26 770 38C764 46 752 46 746 38C736 26 700 22 650 22C600 22 586 30 578 62C572 84 548 84 542 62C534 30 510 22 470 22C420 22 404 28 396 42C390 52 374 52 368 42C360 28 330 22 290 22C240 22 226 30 218 50C212 66 194 66 188 50C180 30 150 22 110 22C70 22 50 26 40 36C34 42 22 42 16 36C10 28 4 24 0 22Z"/>
+    <path fill="#F2C14E" opacity=".55" d="M0 0H1200V10C1100 12 1000 8 900 11C780 14 700 9 600 12C480 15 380 9 280 12C180 14 90 9 0 11Z"/>
+    <ellipse class="drop" cx="955" cy="70" rx="6" ry="8" fill="#D9961A"/>
+    <ellipse class="drop d2" cx="560" cy="78" rx="6.5" ry="9" fill="#D9961A"/>
+    <ellipse class="drop d3" cx="203" cy="62" rx="5" ry="7" fill="#D9961A"/>
+  </svg>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="beeSym" viewBox="0 0 34 30">
+    <ellipse class="wing" cx="13" cy="7" rx="6" ry="8" fill="#F4F1E6" fill-opacity=".75" stroke="#C4C8D8" stroke-width=".6"/>
+    <ellipse class="wing" cx="20" cy="8" rx="5" ry="7" fill="#F4F1E6" fill-opacity=".6" stroke="#C4C8D8" stroke-width=".6"/>
+    <ellipse cx="17" cy="19" rx="11" ry="7.5" fill="#F2C14E"/>
+    <path d="M12 12.6v12.8M17 11.5v15M22 12.6v12.8" stroke="#1E2440" stroke-width="2.6"/>
+    <circle cx="29" cy="18" r="4.6" fill="#1E2440"/>
+    <path d="M5.5 19 L1 20" stroke="#1E2440" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<section class="zoom" id="zoom" aria-label="Where the honey comes from">
+  <div class="stage">
+    <svg id="map" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated map of Spring Lakes zooming into the hives beside the 3rd hole on the South Course">
+      <defs>
+        <pattern id="mow" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><rect width="40" height="40" fill="var(--fairway)"/><rect width="20" height="40" fill="var(--fairway-stripe)"/></pattern>
+        <radialGradient id="pinGlow"><stop offset="0" stop-color="#F2C14E" stop-opacity=".55"/><stop offset="1" stop-color="#F2C14E" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g id="world"></g>
+    </svg>
+    <div class="vignette"></div>
+    <p class="scroll-hint" id="hint">Scroll to fly in</p>
+    <div class="steps-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+    <div class="captions">
+      <div class="cap-stack">
+        <div class="cap on" data-step="0">
+          <p class="eyebrow">Stouffville, Ontario</p>
+          <h2>54 holes of countryside</h2>
+          <p>North, East and South. Somewhere out here, a few colonies of bees are hard at work.</p>
+        </div>
+        <div class="cap" data-step="1">
+          <p class="eyebrow">The South Course</p>
+          <h2>Follow the fairways south</h2>
+          <p>Tree lines, ponds and open rough, all within flying distance of the hives.</p>
+        </div>
+        <div class="cap" data-step="2">
+          <p class="eyebrow">Hole 3, South</p>
+          <h2>Step off the tee and look left</h2>
+          <p>Just off the left side of the 3rd fairway, away from the line of play.</p>
+        </div>
+        <div class="cap last" data-step="3">
+          <p class="eyebrow">The source</p>
+          <h2>Our hives</h2>
+          <p>Every jar of Spring Lakes Honey comes from these hives, a short walk from the 3rd fairway. It does not travel far to reach you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="howTitle">
+  <div class="wrap">
+    <p class="eyebrow">How ordering works</p>
+    <h2 class="title" id="howTitle">From the hive to your hands in three steps</h2>
+    <ol class="flow">
+      <li><span class="n">1</span><h3>Reserve online</h3><p>Choose how many jars you want and send your order. Orders are filled in the order they arrive.</p></li>
+      <li><span class="n">2</span><h3>We reach out for payment</h3><p>No payment is taken on this page. Once your order is in, our team will contact you to arrange payment.</p></li>
+      <li><span class="n">3</span><h3>Pick up your honey</h3><p>Collect your jars at the main office once payment is settled.</p></li>
+    </ol>
+    <dl class="facts">
+      <div class="fact"><dt>Jar size</dt><dd>500 g</dd><small>Glass jar, Spring Lakes label</small></div>
+      <div class="fact"><dt>Price</dt><dd>$19.99</dd><small>Plus 13% HST, $22.59 per jar with tax</small></div>
+      <div class="fact"><dt>Order pick up</dt><dd>Main office</dd><small>Also sold in the Pro Shop while supplies last</small></div>
+      <div class="fact"><dt>Supply</dt><dd>Limited</dd><small>First come, first served</small></div>
+    </dl>
+  </div>
+</section>
+
+<section class="order" id="order" aria-labelledby="orderTitle">
+  <div class="wrap order-grid">
+    <div class="order-head">
+      <p class="eyebrow">Reserve your jars</p>
+      <h2 id="orderTitle">Get your <em>honey</em> before it's gone.</h2>
+      <p>Fill in your details below. One order per person, please. If you need more than the limit, add a note and our team will be in touch.</p>
+      <div class="notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2 20.7 7v10L12 22 3.3 17V7Z"/><path d="M12 8v5M12 16.5v.5"/></svg>
+        <div><b>No payment online</b>We will reach out for payment once your order has been submitted. Jars are reserved first come, first served.</div>
+      </div>
+      <p class="stock" id="stockForm" hidden style="color:var(--honey-dark)"></p>
+    </div>
+
+    <div>
+      <form id="form" novalidate>
+        <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+
+        <fieldset>
+          <legend>Your details</legend>
+          <label class="f" for="name">Full name
+            <input type="text" id="name" name="name" autocomplete="name" required>
+            <span class="err" data-for="name"></span></label>
+          <div class="row2">
+            <label class="f" for="email">Email
+              <input type="email" id="email" name="email" autocomplete="email" required>
+              <span class="err" data-for="email"></span></label>
+            <label class="f" for="phone">Phone number
+              <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" required placeholder="905-555-0123">
+              <span class="err" data-for="phone"></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How many jars</legend>
+          <div class="jars-pick">
+            <div class="stepper">
+              <button type="button" id="minus" aria-label="One fewer jar">&minus;</button>
+              <output class="count" id="count" for="minus plus" aria-live="polite">1</output>
+              <button type="button" id="plus" aria-label="One more jar">+</button>
+              <span class="count-l" id="countLabel">jar of 500 g honey</span>
+            </div>
+            <div class="shelf" id="shelf" aria-label="Tap a jar to set the quantity"></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Anything else</legend>
+          <label class="f" for="notes">Notes for our team (optional)
+            <textarea id="notes" name="notes" maxlength="500"></textarea></label>
+        </fieldset>
+
+        <div class="summary" aria-live="polite">
+          <div class="ln"><span id="sumJars">1 jar × $19.99</span><span id="sumSub">$19.99</span></div>
+          <div class="ln"><span>HST 13%</span><span id="sumHst">$2.60</span></div>
+          <div class="tot"><span>Estimated total</span><b id="sumTot">$22.59</b></div>
+          <small>Payment is arranged by our team after you submit.</small>
+        </div>
+
+        <div class="submit-row">
+          <button class="btn" type="submit" id="submit">Place my order
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M8.5 3l5 5-5 5"/></svg></button>
+          <span class="form-msg" id="formMsg" role="alert"></span>
+        </div>
+      </form>
+
+      <div class="done" id="done" hidden tabindex="-1">
+        <svg class="done-hex" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M32 4 56 18v28L32 60 8 46V18Z"/><path d="m21 32 8 8 15-16"/></svg>
+        <h3>Your honey is reserved.</h3>
+        <p>Thank you. Our team will reach out by email or phone to arrange payment, then your jars will be ready for pick up at the main office.</p>
+        <dl id="doneList"></dl>
+        <p class="preview-note" id="previewNote" hidden>Preview mode. This order was not saved because the page is not connected to the order sheet yet.</p>
+        <div><button class="btn" type="button" id="again">Place another order</button></div>
+      </div>
+
+      <div class="closed" id="closed" hidden>
+        <h3>Sold out for now.</h3>
+        <p>Every jar from this harvest has been spoken for. Thank you for the support. Ask our team in the Pro Shop about the next batch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="mark">SPRING LAKES GOLF CLUB</p>
+    <p>Questions? Call our team at <b>905-640-3633</b>.</p>
+    <p class="sig">Team Stanley</p>
+  </div>
+</footer>
+
+<script>window.HONEY_ENDPOINT = "https://script.google.com/macros/s/AKfycbwhXn0tfV949kUut-8TuUfHUaRycZi4nKdnm3LtDoT0QjOv_m0vspRCbjwQv-91veU-PA/exec";</script>
+<script>
+(function () {
+  'use strict';
+  var ENDPOINT = window.HONEY_ENDPOINT || '';
+  var PRICE = 1999, HST = 0.13;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var maxJars = 12, remaining = null;
+
+  /* ---------- seeded random ---------- */
+  function rng(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+
+  /* ---------- honeycomb canvas ---------- */
+  var cv = document.getElementById('comb'), cx = cv.getContext('2d');
+  var cells = [], W = 0, H = 0, R = 26, mouse = { x: -999, y: -999 }, running = false, dpr = 1;
+  function buildComb() {
+    var hero = cv.parentElement; dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = hero.clientWidth; H = hero.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    R = W < 640 ? 20 : 28;
+    var w = Math.sqrt(3) * R, h = 1.5 * R, r = rng(7); cells = [];
+    for (var row = -1; row * h < H + R; row++) for (var col = -1; col * w < W + w; col++) {
+      var x = col * w + (row % 2 ? w / 2 : 0), y = row * h;
+      cells.push({ x: x, y: y, f: r() < .08 ? r() * .8 : 0, t: 0, g: 0 });
+    }
+  }
+  function hexPath(x, y, rr) { cx.beginPath(); for (var i = 0; i < 6; i++) { var a = Math.PI / 3 * i + Math.PI / 6; cx.lineTo(x + rr * Math.cos(a), y + rr * Math.sin(a)); } cx.closePath(); }
+  function drawComb() {
+    cx.clearRect(0, 0, W, H);
+    for (var i = 0; i < cells.length; i++) {
+      var c = cells[i];
+      if (!reduce) {
+        if (c.t === 0 && Math.random() < .0009) c.t = .35 + Math.random() * .6;
+        c.f += (c.t - c.f) * .012; if (c.t && Math.abs(c.t - c.f) < .01) c.t = 0;
+        var d = Math.hypot(c.x - mouse.x, c.y - mouse.y); c.g += ((d < 140 ? 1 - d / 140 : 0) - c.g) * .12;
+      }
+      hexPath(c.x, c.y, R - 2);
+      var fill = c.f * .32 + c.g * .38;
+      if (fill > .01) { cx.fillStyle = 'rgba(217,150,26,' + fill.toFixed(3) + ')'; cx.fill(); }
+      cx.strokeStyle = 'rgba(184,154,45,' + (0.13 + c.g * .5).toFixed(3) + ')'; cx.lineWidth = 1; cx.stroke();
+    }
+  }
+  function combLoop() { if (!running) return; drawComb(); requestAnimationFrame(combLoop); }
+  buildComb(); drawComb();
+  var hero = document.querySelector('.hero');
+  hero.addEventListener('pointermove', function (e) { var b = cv.getBoundingClientRect(); mouse.x = e.clientX - b.left; mouse.y = e.clientY - b.top; });
+  hero.addEventListener('pointerleave', function () { mouse.x = mouse.y = -999; });
+  window.addEventListener('resize', function () { buildComb(); drawComb(); layoutMap(); onScroll(); });
+  if (!reduce && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { var v = en[0].isIntersecting; if (v && !running) { running = true; combLoop(); } else if (!v) running = false; }).observe(hero);
+  }
+
+  /* ---------- hero bees ---------- */
+  var bees = [].slice.call(document.querySelectorAll('.hero .bee'));
+  var beeCfg = [{ ax: .62, ay: .28, rx: .16, ry: .14, sp: .00042, ph: 0 }, { ax: .78, ay: .55, rx: .12, ry: .2, sp: .00055, ph: 2 }, { ax: .48, ay: .7, rx: .2, ry: .08, sp: .00035, ph: 4 }];
+  function placeBees(t) {
+    var w = hero.clientWidth, h = hero.clientHeight;
+    bees.forEach(function (b, i) {
+      var c = beeCfg[i], a = t * c.sp + c.ph;
+      var x = (c.ax + Math.sin(a) * c.rx + Math.sin(a * 3.1) * .02) * w, y = (c.ay + Math.sin(a * 2) * c.ry + Math.cos(a * 5) * .015) * h;
+      var dx = Math.cos(a) * c.rx, flip = dx < 0 ? -1 : 1;
+      b.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scaleX(' + flip + ')';
+    });
+  }
+  placeBees(0);
+  if (!reduce) (function beeLoop(t) { if (running || t < 100) placeBees(t); requestAnimationFrame(beeLoop); })(0);
+
+  /* ---------- jar parallax ---------- */
+  var jar = document.getElementById('jar');
+
+  /* ---------- course map ---------- */
+  var NS = 'http://www.w3.org/2000/svg', world = document.getElementById('world');
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); (parent || world).appendChild(e); return e; }
+  var HIVE = { x: 958, y: 548 };
+  function buildMap() {
+    var r = rng(42);
+    el('rect', { x: -400, y: -400, width: 2400, height: 1800, fill: 'var(--rough)' });
+    for (var i = 0; i < 70; i++) el('ellipse', { cx: r() * 1700 - 50, cy: r() * 1100 - 50, rx: 40 + r() * 120, ry: 30 + r() * 80, fill: 'var(--rough-dark)', opacity: .35 });
+    // generic fairways
+    var fw = [
+      'M180 160 C260 120 380 110 470 150 C500 165 495 200 460 205 C380 190 270 205 200 215 C160 220 150 180 180 160Z',
+      'M560 90 C600 70 640 80 650 120 L690 330 C695 360 660 370 645 345 L585 140 C578 115 545 105 560 90Z',
+      'M140 420 C230 380 360 390 420 430 C440 450 420 470 395 465 C310 445 230 450 160 465 C120 470 110 435 140 420Z',
+      'M1180 120 C1260 100 1400 110 1470 160 C1490 180 1470 200 1445 192 C1370 165 1270 160 1200 168 C1165 172 1155 130 1180 120Z',
+      'M1250 330 C1300 320 1330 360 1320 420 L1300 620 C1296 650 1260 650 1258 620 L1265 420 C1268 380 1225 345 1250 330Z',
+      'M300 640 C380 600 520 610 600 650 C625 665 610 690 585 685 C500 665 400 670 320 690 C280 700 270 655 300 640Z',
+      'M640 760 C700 740 800 760 860 800 C880 815 865 840 840 832 C780 810 700 800 650 805 C615 808 610 770 640 760Z',
+      'M1180 760 C1260 740 1400 760 1480 820 C1500 840 1480 860 1455 850 C1380 815 1280 805 1200 810 C1165 812 1155 770 1180 760Z'
+    ];
+    fw.forEach(function (d) { el('path', { d: d, fill: 'url(#mow)' }); });
+    // greens for generic holes
+    [[470, 175], [672, 352], [410, 448], [1462, 178], [1280, 640], [598, 668], [856, 820], [1470, 838]].forEach(function (g) { el('ellipse', { cx: g[0], cy: g[1], rx: 26, ry: 20, fill: 'var(--green-c)' }); });
+    // ponds
+    el('path', { d: 'M760 380 C820 340 900 350 920 400 C935 440 880 470 830 462 C770 455 720 420 760 380Z', fill: 'var(--water)' });
+    el('path', { d: 'M790 390 C830 370 880 375 895 400', stroke: 'var(--water-light)', 'stroke-width': 5, fill: 'none', 'stroke-linecap': 'round', opacity: .7 });
+    el('ellipse', { cx: 330, cy: 300, rx: 70, ry: 40, fill: 'var(--water)' });
+    el('ellipse', { cx: 1440, cy: 470, rx: 60, ry: 38, fill: 'var(--water)' });
+    // cart path
+    el('path', { d: 'M80 560 C300 520 520 560 700 520 C860 485 940 640 1010 700 C1100 780 1250 700 1560 720', stroke: 'var(--path)', 'stroke-width': 7, fill: 'none', 'stroke-linecap': 'round', opacity: .8 });
+    // 3 SOUTH: tee bottom, green top, hive just left
+    el('path', { d: 'M1046 860 C1080 800 1090 700 1078 620 C1068 540 1072 460 1092 390 C1100 360 1125 355 1132 385 C1140 420 1130 520 1132 610 C1136 720 1120 810 1088 868 C1076 890 1040 885 1046 860Z', fill: 'url(#mow)', stroke: 'var(--fairway-stripe)', 'stroke-width': 2 });
+    el('ellipse', { cx: 1110, cy: 352, rx: 38, ry: 30, fill: 'var(--green-c)' });
+    el('ellipse', { cx: 1150, cy: 392, rx: 16, ry: 10, fill: 'var(--sand)' });
+    el('ellipse', { cx: 1068, cy: 388, rx: 12, ry: 8, fill: 'var(--sand)' });
+    el('rect', { x: 1048, y: 878, width: 46, height: 22, rx: 6, fill: 'var(--green-c)' });
+    el('line', { x1: 1112, y1: 350, x2: 1112, y2: 318, stroke: '#F4F1E6', 'stroke-width': 2 });
+    el('path', { d: 'M1112 318 L1130 324 L1112 330Z', fill: '#B89A2D' });
+    el('circle', { cx: 1112, cy: 351, r: 2.5, fill: '#1E2440' });
+    // tee marker "3"
+    var tg = el('g', {}); el('circle', { cx: 1030, cy: 888, r: 13, fill: '#323C60', stroke: '#B89A2D', 'stroke-width': 2 }, tg);
+    var t3 = el('text', { x: 1030, y: 893, 'text-anchor': 'middle', 'font-family': 'Cinzel, Georgia, serif', 'font-size': 14, 'font-weight': 600, fill: '#F4F1E6' }, tg); t3.textContent = '3';
+    // wildflower patch around hives
+    for (i = 0; i < 160; i++) { var a = r() * 6.283, d = Math.sqrt(r()) * 60; el('circle', { cx: HIVE.x + Math.cos(a) * d * 1.3, cy: HIVE.y + Math.sin(a) * d, r: .35 + r() * .55, fill: ['#F2C14E', '#F4F1E6', '#C9A0D8', '#F2C14E'][i % 4], opacity: .9 }); }
+    // trees (skip areas near fairways roughly by avoiding hive and 3S corridor)
+    for (i = 0; i < 380; i++) {
+      var x = r() * 1700 - 50, y = r() * 1100 - 50;
+      if (x > 1020 && x < 1160 && y > 320 && y < 900) continue;
+      if (Math.hypot(x - HIVE.x, (y - HIVE.y) * 1.3) < 70) continue;
+      if (x > 720 && x < 940 && y > 330 && y < 480) continue;
+      var s = 9 + r() * 14;
+      el('circle', { cx: x + 3, cy: y + 4, r: s, fill: '#1F3A1C', opacity: .35 });
+      el('circle', { cx: x, cy: y, r: s, fill: r() < .5 ? 'var(--tree)' : 'var(--tree-light)' });
+      el('circle', { cx: x - s * .3, cy: y - s * .3, r: s * .45, fill: '#4F7E40', opacity: .55 });
+    }
+    // tree line framing the hives (west side)
+    [[905, 500], [900, 560], [912, 612], [930, 470], [990, 470]].forEach(function (p) { el('circle', { cx: p[0], cy: p[1], r: 16, fill: 'var(--tree)' }); el('circle', { cx: p[0] - 5, cy: p[1] - 5, r: 7, fill: '#4F7E40', opacity: .6 }); });
+    // course labels
+    [['NORTH', 330, 260], ['EAST', 1330, 260], ['SOUTH', 900, 960]].forEach(function (l) {
+      var t = el('text', { x: l[1], y: l[2], 'text-anchor': 'middle', 'font-family': 'Cinzel, Georgia, serif', 'font-size': 34, 'letter-spacing': 10, fill: '#F4F1E6', opacity: .85, class: 'clabel' }); t.textContent = l[0];
+    });
+    var s3 = el('text', { x: 1170, y: 640, 'font-family': 'Cinzel, Georgia, serif', 'font-size': 14, 'letter-spacing': 3, fill: '#F4F1E6', opacity: .9 }); s3.textContent = '3 SOUTH';
+    // hives
+    var hives = el('g', {});
+    [[-14, -2], [0, -4], [14, 0]].forEach(function (o) {
+      var hx = HIVE.x + o[0], hy = HIVE.y + o[1];
+      el('ellipse', { cx: hx + 1, cy: hy + 6, rx: 6, ry: 2, fill: '#1F3A1C', opacity: .45 }, hives);
+      el('rect', { x: hx - 4.5, y: hy - 2, width: 9, height: 7, fill: '#F4F1E6', stroke: '#B89A2D', 'stroke-width': .4 }, hives);
+      el('rect', { x: hx - 4.5, y: hy - 6.5, width: 9, height: 4.3, fill: '#EDE5CC', stroke: '#B89A2D', 'stroke-width': .4 }, hives);
+      el('rect', { x: hx - 5.2, y: hy - 8, width: 10.4, height: 1.7, fill: '#323C60' }, hives);
+      el('rect', { x: hx - 1.5, y: hy + 3.4, width: 3, height: .8, fill: '#323C60' }, hives);
+    });
+    // tiny label near hives (visible when zoomed)
+    var hl = el('text', { x: HIVE.x, y: HIVE.y + 18, 'text-anchor': 'middle', 'font-family': 'Cinzel, Georgia, serif', 'font-size': 4.2, 'letter-spacing': 1.2, fill: '#F4F1E6', id: 'hiveLabel', opacity: 0 }); hl.textContent = 'THE HIVES';
+    // pin
+    el('circle', { cx: HIVE.x, cy: HIVE.y, r: 40, fill: 'url(#pinGlow)', id: 'pinGlowC' });
+    el('circle', { cx: HIVE.x, cy: HIVE.y, r: 22, fill: 'none', stroke: '#F2C14E', 'stroke-width': 2.5, id: 'pinRing' });
+    // map bees
+    window.__mapBees = [];
+    for (i = 0; i < 14; i++) window.__mapBees.push({ e: el('circle', { r: .55, fill: '#1E2440', stroke: '#F2C14E', 'stroke-width': .45 }), a: r() * 6.28, rad: 8 + r() * 30, sp: .6 + r() * 1.2, w: r() * 3 });
+  }
+  buildMap();
+
+  var zoomSec = document.getElementById('zoom'), caps = [].slice.call(document.querySelectorAll('.cap')), dots = [].slice.call(document.querySelectorAll('.steps-dots i'));
+  var pinRing = document.getElementById('pinRing'), pinGlow = document.getElementById('pinGlowC'), hiveLabel = document.getElementById('hiveLabel'), hint = document.getElementById('hint');
+  var labels = [].slice.call(document.querySelectorAll('.clabel'));
+  var curScale = 1, step = -1, zp = 0;
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function layoutMap() {}
+  function setZoom(p) {
+    zp = p;
+    var e = ease(Math.min(1, p / .92));
+    var s = Math.exp(Math.log(1) + (Math.log(9) - Math.log(1)) * e); curScale = s;
+    var fx = 800 + (HIVE.x - 800) * Math.min(1, e * 1.6), fy = 500 + (HIVE.y - 500) * Math.min(1, e * 1.6);
+    world.setAttribute('transform', 'translate(800 500) scale(' + s.toFixed(4) + ') translate(' + (-fx).toFixed(2) + ' ' + (-fy).toFixed(2) + ')');
+    var lo = Math.max(0, 1 - e * 3); labels.forEach(function (l) { l.setAttribute('opacity', (lo * .85).toFixed(2)); });
+    hiveLabel.setAttribute('opacity', Math.max(0, (e - .75) * 4).toFixed(2));
+    var st = p < .2 ? 0 : p < .45 ? 1 : p < .72 ? 2 : 3;
+    if (st !== step) { step = st; caps.forEach(function (c, i) { c.classList.toggle('on', i === st); }); dots.forEach(function (d, i) { d.classList.toggle('on', i <= st); }); }
+    hint.style.opacity = p > .05 ? 0 : 1;
+  }
+  function animateMapBits(t) {
+    var s = curScale, pulse = (t / 1400) % 1;
+    pinRing.setAttribute('r', ((14 + pulse * 26) / s * 1.4).toFixed(2));
+    pinRing.setAttribute('stroke-width', (2.5 / s * 1.4).toFixed(3));
+    pinRing.setAttribute('opacity', (1 - pulse).toFixed(2));
+    pinGlow.setAttribute('r', (60 / s * 1.4).toFixed(2));
+    var vis = Math.max(0, Math.min(1, (s - 3) / 3));
+    window.__mapBees.forEach(function (b) {
+      var a = b.a + t / 1000 * b.sp;
+      b.e.setAttribute('cx', (HIVE.x + Math.cos(a) * b.rad * 1.3 + Math.sin(a * 3 + b.w) * 4).toFixed(2));
+      b.e.setAttribute('cy', (HIVE.y + Math.sin(a) * b.rad * .8 + Math.cos(a * 2 + b.w) * 3).toFixed(2));
+      b.e.setAttribute('opacity', vis.toFixed(2));
+    });
+  }
+  function onScroll() {
+    var b = zoomSec.getBoundingClientRect(), span = zoomSec.offsetHeight - window.innerHeight;
+    if (!reduce && span > 0) setZoom(Math.max(0, Math.min(1, -b.top / span)));
+    var hb = hero.getBoundingClientRect();
+    if (!reduce && hb.bottom > 0) { var k = Math.max(0, -hb.top); jar.style.translate = '0 ' + (k * .18).toFixed(1) + 'px'; jar.style.rotate = (k * .02).toFixed(2) + 'deg'; }
+  }
+  if (reduce) { zoomSec.classList.add('static'); setZoom(.95); animateMapBits(0); }
+  else {
+    setZoom(0);
+    var ticking = false;
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; onScroll(); }); } }, { passive: true });
+    (function mapLoop(t) { var b = zoomSec.getBoundingClientRect(); if (b.bottom > 0 && b.top < window.innerHeight) animateMapBits(t); requestAnimationFrame(mapLoop); })(0);
+    onScroll();
+  }
+
+  /* ---------- order form ---------- */
+  var form = document.getElementById('form'), qty = 1;
+  var countEl = document.getElementById('count'), shelf = document.getElementById('shelf');
+  function money(c) { return '$' + (c / 100).toFixed(2); }
+  function totals(n) { var sub = n * PRICE, hst = Math.round(sub * HST); return { sub: sub, hst: hst, tot: sub + hst }; }
+  function buildShelf() {
+    shelf.innerHTML = '';
+    for (var i = 1; i <= maxJars; i++) {
+      var b = document.createElement('button'); b.type = 'button'; b.dataset.n = i; b.setAttribute('aria-label', i + (i === 1 ? ' jar' : ' jars'));
+      b.innerHTML = '<svg viewBox="0 0 34 44" aria-hidden="true"><rect class="lidp" x="8" y="2" width="18" height="6" rx="1.5"/><path class="fill" d="M8 16 H26 V37 Q26 41 22 41 H12 Q8 41 8 37 Z"/><path class="glass" d="M9 9 Q5 10 5 14 V37 Q5 42 11 42 H23 Q29 42 29 37 V14 Q29 10 25 9 Z"/></svg>';
+      b.addEventListener('click', function () { setQty(+this.dataset.n, true); });
+      shelf.appendChild(b);
+    }
+  }
+  function setQty(n, pop) {
+    var cap = remaining != null ? Math.min(maxJars, remaining) : maxJars;
+    qty = Math.max(1, Math.min(cap || 1, n));
+    countEl.textContent = qty;
+    document.getElementById('countLabel').textContent = (qty === 1 ? 'jar' : 'jars') + ' of 500 g honey';
+    document.getElementById('minus').disabled = qty <= 1;
+    document.getElementById('plus').disabled = qty >= cap;
+    [].forEach.call(shelf.children, function (b, i) {
+      var on = i < qty; b.classList.toggle('on', on); b.disabled = i >= cap; b.style.opacity = i >= cap ? .3 : 1;
+      if (pop && i === qty - 1) { b.classList.remove('pop'); void b.offsetWidth; b.classList.add('pop'); }
+    });
+    var t = totals(qty);
+    document.getElementById('sumJars').textContent = qty + (qty === 1 ? ' jar' : ' jars') + ' × $19.99';
+    document.getElementById('sumSub').textContent = money(t.sub);
+    document.getElementById('sumHst').textContent = money(t.hst);
+    document.getElementById('sumTot').textContent = money(t.tot);
+  }
+  document.getElementById('minus').addEventListener('click', function () { setQty(qty - 1, false); });
+  document.getElementById('plus').addEventListener('click', function () { setQty(qty + 1, true); });
+  buildShelf(); setQty(1);
+
+  function showStock() {
+    ['stockHero', 'stockForm'].forEach(function (id) {
+      var e = document.getElementById(id);
+      if (remaining != null && remaining > 0 && remaining <= 100) { e.hidden = false; e.textContent = remaining + (remaining === 1 ? ' jar' : ' jars') + ' left from this harvest'; } else e.hidden = true;
+    });
+  }
+  function closePage() { form.hidden = true; document.getElementById('done').hidden = true; document.getElementById('closed').hidden = false; ['stockHero', 'stockForm'].forEach(function (id) { document.getElementById(id).hidden = true; }); }
+  function applyState(st) {
+    if (!st) return;
+    if (st.max) { maxJars = Math.max(1, Math.min(24, +st.max)); buildShelf(); }
+    remaining = (st.remaining === null || st.remaining === undefined || st.remaining === '') ? null : +st.remaining;
+    if (st.open === false || remaining === 0) { closePage(); return; }
+    showStock(); setQty(qty);
+  }
+  if (ENDPOINT) fetch(ENDPOINT + '?state=1').then(function (r) { return r.json(); }).then(applyState).catch(function () {});
+
+  function setErr(id, msg) { var s = form.querySelector('.err[data-for="' + id + '"]'), i = document.getElementById(id); s.textContent = msg || ''; i.classList.toggle('bad', !!msg); if (msg) i.setAttribute('aria-invalid', 'true'); else i.removeAttribute('aria-invalid'); }
+  function validate() {
+    var ok = true, name = form.elements['name'].value.trim(), email = form.elements['email'].value.trim(), phone = form.elements['phone'].value.trim();
+    if (name.length < 2) { setErr('name', 'Please enter your full name.'); ok = false; } else setErr('name');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { setErr('email', 'Please enter a valid email, like name@example.com.'); ok = false; } else setErr('email');
+    if (phone.replace(/\D/g, '').length < 10) { setErr('phone', 'Please enter a 10 digit phone number.'); ok = false; } else setErr('phone');
+    return ok;
+  }
+  ['name', 'email', 'phone'].forEach(function (id) { document.getElementById(id).addEventListener('blur', function () { if (this.value) validate(); }); });
+
+  var reqId = null;
+  function newId() { try { return crypto.randomUUID(); } catch (e) { return 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2); } }
+  function post(body, tries) {
+    var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null, timer = ctl && setTimeout(function () { ctl.abort(); }, 25000);
+    return fetch(ENDPOINT, { method: 'POST', body: JSON.stringify(body), signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { return r.json(); })
+      .then(function (res) { clearTimeout(timer); if (!res || typeof res.ok !== 'boolean') throw new Error('bad reply'); return res; })
+      .catch(function (err) { clearTimeout(timer); if (tries <= 1) throw err; return new Promise(function (r) { setTimeout(r, 1200); }).then(function () { return post(body, tries - 1); }); });
+  }
+  function showDone(data, res, preview) {
+    var t = totals(data.jars), dl = document.getElementById('doneList');
+    var rows = [['Order', res && res.order ? res.order : 'Preview'], ['Name', data.name], ['Jars', data.jars + ' × 500 g'], ['Pick up', data.pickup], ['Estimated total', money(t.tot) + ' incl. HST']];
+    dl.innerHTML = ''; rows.forEach(function (r) { var dt = document.createElement('dt'), dd = document.createElement('dd'); dt.textContent = r[0]; dd.textContent = r[1]; dl.appendChild(dt); dl.appendChild(dd); });
+    document.getElementById('previewNote').hidden = !preview;
+    form.hidden = true; var d = document.getElementById('done'); d.hidden = false; d.focus({ preventScroll: true });
+    d.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    if (res && typeof res.remaining === 'number') { remaining = res.remaining; showStock(); }
+  }
+  var msg = document.getElementById('formMsg'), btn = document.getElementById('submit');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); msg.textContent = '';
+    if (!validate()) { var bad = form.querySelector('.bad'); if (bad) bad.focus(); return; }
+    if (!reqId) reqId = newId();
+    var data = { requestId: reqId, website: form.elements['website'].value, name: form.elements['name'].value.trim(), email: form.elements['email'].value.trim(), phone: form.elements['phone'].value.trim(), jars: qty, pickup: 'Main office', notes: form.elements['notes'].value.trim() };
+    btn.disabled = true; btn.firstChild.textContent = 'Sending ';
+    function reset() { btn.disabled = false; btn.firstChild.textContent = 'Place my order '; }
+    if (!ENDPOINT) { setTimeout(function () { reset(); showDone(data, null, true); reqId = null; }, 500); return; }
+    post(data, 4).then(function (res) {
+      reset();
+      if (res.ok) { showDone(data, res, false); reqId = null; return; }
+      reqId = null;
+      if (res.reason === 'closed') { closePage(); return; }
+      if (res.reason === 'stock') { remaining = res.remaining; if (!remaining) { closePage(); return; } showStock(); setQty(qty); msg.textContent = 'Only ' + remaining + (remaining === 1 ? ' jar is' : ' jars are') + ' left. Please lower your quantity and send again.'; return; }
+      msg.textContent = res.message || 'Your order was not saved. Please check your details and try again.';
+    }, function () { reset(); msg.textContent = 'Your order was not saved. Please try again, or call our team at 905-640-3633.'; });
+  });
+  document.getElementById('again').addEventListener('click', function () {
+    form.reset(); setQty(1); document.getElementById('done').hidden = true; form.hidden = false; form.elements['name'].focus();
+  });
+})();
+</script>
+
+</body></html>
